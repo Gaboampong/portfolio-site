@@ -1,0 +1,69 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const impacts = [
+  {
+    index: '01',
+    title: 'Operational Reporting Systems',
+    body: 'Built reporting workflows in Power BI and Excel that made trends easier to spot and business decisions easier to support.',
+    tag: 'Power BI · Excel · Reporting',
+  },
+  {
+    index: '02',
+    title: 'Data Quality and Validation',
+    body: 'Validated data across systems, detected inconsistencies, and improved confidence in downstream reporting.',
+    tag: 'SQL · Validation · Accuracy',
+  },
+  {
+    index: '03',
+    title: 'Monitoring and Visibility',
+    body: 'Used Grafana and systems monitoring practices to make infrastructure behavior and operational signals easier to understand.',
+    tag: 'Grafana · Monitoring · Integrity',
+  },
+  {
+    index: '04',
+    title: 'Collaborative Delivery',
+    body: 'Developed a Django-based final year project collaboratively, translating technical effort into a working outcome.',
+    tag: 'Django · Python · Teamwork',
+  },
+];
+---
+
+<section id="projects" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Impact"
+    title="Useful work, not just portfolio filler"
+    lead="The strongest signal in my experience is consistent: clearer reporting, better visibility, and better control over the quality of data in motion."
+  />
+
+  <div class="grid gap-5 md:grid-cols-2">
+    {impacts.map((item) => (
+      <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+        <span class="font-mono text-xs uppercase tracking-[0.24em] text-cyan-300/80">{item.index}</span>
+        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">{item.title}</h3>
+        <p class="mt-4 text-sm leading-7 text-slate-300">{item.body}</p>
+        <span class="mt-5 inline-flex rounded-full border border-cyan-300/20 bg-cyan-300/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+          {item.tag}
+        </span>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-5 grid gap-5 md:grid-cols-2">
+    <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Achievement</p>
+      <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">20% workflow efficiency improvement</h3>
+      <p class="mt-4 text-sm leading-7 text-slate-300">
+        Achieved by improving data collection processes and reducing project delays.
+      </p>
+    </article>
+
+    <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Certifications</p>
+      <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">Accenture and KPMG data analytics simulations</h3>
+      <p class="mt-4 text-sm leading-7 text-slate-300">
+        Completed Forage job simulations in September 2024, reinforcing practical analytics and visualization exposure.
+      </p>
+    </article>
+  </div>
+</section>

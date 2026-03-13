@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AboutSection from '../components/AboutSection.astro';
+import EducationSection from '../components/EducationSection.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+import FeaturedWorkSection from '../components/FeaturedWorkSection.astro';
+import ImpactSection from '../components/ImpactSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+---
+
+<Layout>
+  <header class="sticky top-0 z-30 border-b border-white/8 bg-slate-950/75 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-6 lg:px-8">
+      <a href="#top" class="text-lg font-bold tracking-tight text-white">Gabriel Adjei Boampong</a>
+      <nav class="hidden gap-8 text-sm text-slate-300 md:flex">
+        <a class="transition hover:text-white" href="#about">Profile</a>
+        <a class="transition hover:text-white" href="#education">Education</a>
+        <a class="transition hover:text-white" href="#experience">Experience</a>
+        <a class="transition hover:text-white" href="#projects">Impact</a>
+        <a class="transition hover:text-white" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <Hero />
+    <AboutSection />
+    <EducationSection />
+    <ExperienceSection />
+    <FeaturedWorkSection />
+    <ImpactSection />
+    <ContactSection />
+  </main>
+
+  <footer class="border-t border-white/8 px-5 py-8 text-center text-sm text-slate-400 sm:px-6 lg:px-8">
+    <p>Copyright &#169; 2026 Gabriel Adjei Boampong. All Rights Reserved.</p>
+  </footer>
+
+  <script is:inline>
+    const initCanvasBackground = () => {
+      const canvas = document.getElementById('data-canvas');
+      if (!canvas) return;
+
+      const context = canvas.getContext('2d');
+      if (!context) return;
+
+      const glyphs = '0123456789SQLPYBI+-=*/';
+      let columns = [];
+      let width = 0;
+      let height = 0;
+      let frame = 0;
+
+      const resize = () => {
+        const ratio = window.devicePixelRatio || 1;
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.floor(width * ratio);
+        canvas.height = Math.floor(height * ratio);
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+        const totalColumns = Math.ceil(width / 34);
+        columns = Array.from({ length: totalColumns }, (_, index) => ({
+          x: index * 34,
+          y: Math.random() * height,
+          speed: 0.35 + Math.random() * 0.95,
+          size: 11 + Math.random() * 4,
+        }));
+      };
+
+      const draw = () => {
+        context.fillStyle = 'rgba(2, 8, 19, 0.085)';
+        context.fillRect(0, 0, width, height);
+
+        columns.forEach((column, index) => {
+          context.font = `${column.size}px IBM Plex Mono`;
+          context.fillStyle = `rgba(103, 232, 249, ${0.08 + (index % 5) * 0.03})`;
+          context.fillText(glyphs[Math.floor(Math.random() * glyphs.length)], column.x, column.y);
+          column.y += column.speed;
+          if (column.y > height + 20) column.y = -20;
+        });
+
+        frame = window.requestAnimationFrame(draw);
+      };
+
+      resize();
+      draw();
+      window.addEventListener('resize', resize);
+      window.addEventListener('beforeunload', () => window.cancelAnimationFrame(frame), { once: true });
+    };
+
+    const initCountUps = () => {
+      const items = document.querySelectorAll('.countup');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const element = entry.target;
+          if (element.dataset.started === 'true') return;
+          element.dataset.started = 'true';
+
+          const target = Number(element.dataset.count || '0');
+          const duration = 1200;
+          const startTime = performance.now();
+
+          const step = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            element.textContent = String(Math.floor(target * progress));
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              element.textContent = String(target);
+            }
+          };
+
+          requestAnimationFrame(step);
+          observer.unobserve(element);
+        });
+      }, { threshold: 0.45 });
+
+      items.forEach((item) => observer.observe(item));
+    };
+
+    const initReveals = () => {
+      const items = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.14 });
+
+      items.forEach((item) => observer.observe(item));
+    };
+
+    const initCaseTabs = () => {
+      const tabs = Array.from(document.querySelectorAll('.case-tab'));
+      const panels = Array.from(document.querySelectorAll('.case-panel'));
+      if (!tabs.length || !panels.length) return;
+
+      const activate = (targetId) => {
+        tabs.forEach((tab) => {
+          const active = tab.dataset.caseTarget === targetId;
+          tab.setAttribute('aria-pressed', active ? 'true' : 'false');
+          tab.classList.toggle('border-cyan-300/35', active);
+          tab.classList.toggle('bg-cyan-300/12', active);
+          tab.classList.toggle('border-white/8', !active);
+          tab.classList.toggle('bg-white/5', !active);
+        });
+
+        panels.forEach((panel) => {
+          panel.classList.toggle('hidden', panel.dataset.casePanel !== targetId);
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => activate(tab.dataset.caseTarget));
+      });
+    };
+
+    initCanvasBackground();
+    initCountUps();
+    initReveals();
+    initCaseTabs();
+  </script>
+</Layout>

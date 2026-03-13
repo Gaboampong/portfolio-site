@@ -1,0 +1,40 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const education = [
+  {
+    degree: 'MSc Big Data Analytics',
+    school: 'University of Ghana',
+    location: 'Accra, Ghana',
+    period: 'Oct 2025 - Sept 2026',
+    note: 'Advanced study focused on analytics, large-scale data handling, and data-driven decision support.',
+  },
+  {
+    degree: 'BSc Computer Science',
+    school: 'Kwame Nkrumah University of Science and Technology',
+    location: 'Kumasi, Ghana',
+    period: 'Sept 2019 - Nov 2023',
+    note: 'Built the technical foundation across programming, systems, software development, and applied computing.',
+  },
+];
+---
+
+<section id="education" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Education"
+    title="Academic grounding that supports practical data work"
+    lead="My education combines computing fundamentals with specialized analytics training, which is why my work sits comfortably between engineering discipline and business insight."
+  />
+
+  <div class="grid gap-5 md:grid-cols-2">
+    {education.map((item) => (
+      <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-7 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">{item.period}</p>
+        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">{item.degree}</h3>
+        <p class="mt-2 text-sm font-medium text-amber-200">{item.school}</p>
+        <p class="mt-1 text-sm text-slate-400">{item.location}</p>
+        <p class="mt-5 text-sm leading-7 text-slate-300">{item.note}</p>
+      </article>
+    ))}
+  </div>
+</section>

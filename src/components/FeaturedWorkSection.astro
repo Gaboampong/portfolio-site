@@ -1,0 +1,117 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const studies = [
+  {
+    id: 'reporting',
+    label: 'Reporting',
+    title: 'Reporting workflows that make operations easier to read',
+    summary:
+      'Built Power BI and Excel reporting outputs that surfaced trends more clearly and supported faster operational review.',
+    outcome: 'Turned raw operational data into more usable reporting for business follow-through.',
+    stack: ['Power BI', 'Excel', 'Operational Reporting'],
+    points: [
+      'Combined data extraction, validation, and reporting into a cleaner workflow.',
+      'Focused on making recurring operational trends easier to identify.',
+      'Supported decision-making with outputs that were more consistent and easier to trust.',
+    ],
+  },
+  {
+    id: 'quality',
+    label: 'Data Quality',
+    title: 'Validation and discrepancy control across systems',
+    summary:
+      'Worked across systems to validate data, investigate inconsistencies, and improve confidence in downstream reporting.',
+    outcome: 'Reduced reporting friction by identifying issues before they became stakeholder-facing problems.',
+    stack: ['SQL', 'Validation', 'Monitoring'],
+    points: [
+      'Checked data accuracy and consistency across multiple reporting touchpoints.',
+      'Supported corrective actions around stock and operational discrepancies.',
+      'Helped maintain cleaner reporting outputs for business and technical teams.',
+    ],
+  },
+  {
+    id: 'monitoring',
+    label: 'Monitoring',
+    title: 'Visibility through dashboards and systems monitoring',
+    summary:
+      'Used Grafana and systems monitoring practices to make infrastructure and data signals more visible and easier to interpret.',
+    outcome: 'Improved system awareness with dashboards and monitoring discipline rather than ad hoc issue discovery.',
+    stack: ['Grafana', 'Systems Monitoring', 'Cloud Research'],
+    points: [
+      'Built dashboard views that translated technical signals into readable monitoring surfaces.',
+      'Researched cloud options with attention to scalability and operational fit.',
+      'Supported integrity and security awareness by monitoring systems proactively.',
+    ],
+  },
+];
+---
+
+<section id="featured-work" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Featured Work"
+    title="Case-study style proof, not just claims"
+    lead="These highlights show the kind of problems I am most useful on: reporting clarity, data quality, and operational visibility."
+  />
+
+  <div class="grid gap-5 lg:grid-cols-[0.36fr_0.64fr]">
+    <div class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-4 backdrop-blur">
+      <div class="grid gap-3">
+        {studies.map((study, index) => (
+          <button
+            type="button"
+            class:list={[
+              'case-tab rounded-2xl border px-4 py-4 text-left transition',
+              index === 0
+                ? 'border-cyan-300/35 bg-cyan-300/12'
+                : 'border-white/8 bg-white/5 hover:border-cyan-300/20 hover:bg-white/8'
+            ]}
+            data-case-target={study.id}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          >
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan-300/80">{study.label}</p>
+            <p class="mt-2 text-sm font-semibold text-white">{study.title}</p>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="reveal">
+      {studies.map((study, index) => (
+        <article
+          class:list={[
+            'case-panel rounded-[2rem] border border-white/10 bg-white/6 p-7 backdrop-blur',
+            index !== 0 && 'hidden'
+          ]}
+          data-case-panel={study.id}
+        >
+          <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">{study.label}</p>
+          <h3 class="mt-4 max-w-2xl text-3xl font-semibold tracking-tight text-white">{study.title}</h3>
+          <p class="mt-4 max-w-3xl text-base leading-8 text-slate-300">{study.summary}</p>
+
+          <div class="mt-6 rounded-2xl border border-cyan-300/20 bg-cyan-300/8 p-4">
+            <p class="font-mono text-[11px] uppercase tracking-[0.24em] text-cyan-200">Outcome</p>
+            <p class="mt-2 text-sm leading-7 text-slate-100">{study.outcome}</p>
+          </div>
+
+          <ul class="mt-6 grid gap-3 text-sm leading-7 text-slate-300">
+            {study.points.map((point) => (
+              <li class="flex gap-3 rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300"></span>
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            {study.stack.map((item) => (
+              <span class="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200">
+                {item}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

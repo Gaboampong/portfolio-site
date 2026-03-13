@@ -1,0 +1,99 @@
+---
+const stats = [
+  { value: 20, suffix: '%', label: 'workflow efficiency improvement' },
+  { value: 4, suffix: '', label: 'roles across analytics, monitoring, and systems support' },
+  { value: 8, suffix: '+', label: 'core tools across SQL, BI, and data engineering' },
+];
+
+const proofPoints = [
+  {
+    label: 'Current role',
+    value: 'Database Engineer at DS7 Limited',
+  },
+  {
+    label: 'Education',
+    value: 'MSc Big Data Analytics, University of Ghana',
+  },
+  {
+    label: 'Core focus',
+    value: 'SQL, Power BI, Excel, Grafana, and data validation',
+  },
+];
+---
+
+<section id="top" class="relative">
+  <div class="mx-auto grid min-h-[72vh] max-w-6xl items-center gap-8 px-5 pb-8 pt-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:pt-20">
+    <div class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-7 shadow-[0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur xl:p-9">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Database Engineer and Data Analyst</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+        Gabriel Adjei Boampong
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg font-medium text-slate-100/90">
+        Clean reporting, reliable data systems, and practical analytics for teams that need numbers they can trust.
+      </p>
+      <p class="mt-5 max-w-2xl text-base leading-8 text-slate-300">
+        Based in Accra, Ghana, I work across database engineering, BI reporting, monitoring, and data validation.
+        My focus is simple: make information clearer, make reporting more dependable, and give stakeholders better visibility.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/asserts/Gabriel_Adjei_Boampong_CV.pdf"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center rounded-full bg-cyan-300 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 hover:bg-cyan-200"
+        >
+          Download CV
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/6 px-5 py-3 text-sm font-semibold text-white transition hover:border-cyan-300/50 hover:bg-cyan-300/10"
+        >
+          Contact Me
+        </a>
+      </div>
+
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-300 transition hover:border-cyan-300/40 hover:text-white" href="https://www.linkedin.com/in/gabrielboampong">LinkedIn</a>
+        <a class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-300 transition hover:border-cyan-300/40 hover:text-white" href="https://github.com/Gaboampong">GitHub</a>
+        <span class="rounded-full border border-amber-300/20 bg-amber-300/8 px-4 py-2 text-amber-200">Accra, Ghana</span>
+      </div>
+
+      <div class="mt-7 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+        {proofPoints.map((point) => (
+          <div class="rounded-[1.15rem] border border-white/7 bg-white/[0.04] px-4 py-3.5">
+            <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-cyan-300/75">{point.label}</p>
+            <p class="mt-1.5 text-sm font-medium leading-6 text-slate-200">{point.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="reveal grid gap-4">
+      <div class="rounded-[2rem] border border-cyan-300/15 bg-slate-900/70 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)] backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">At a glance</p>
+        <div class="mt-5 grid gap-4">
+          {stats.map((stat) => (
+            <div class="rounded-2xl border border-white/8 bg-white/5 p-4">
+              <div class="flex items-end gap-1">
+                <span class="countup text-3xl font-bold tracking-tight text-white" data-count={stat.value}>0</span>
+                <span class="pb-1 text-sm font-semibold text-cyan-300">{stat.suffix}</span>
+              </div>
+              <p class="mt-2 text-sm leading-6 text-slate-300">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] border border-white/10 bg-slate-900/60 p-6 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Strengths</p>
+        <ul class="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+          <li>SQL querying, optimization, and relational database support</li>
+          <li>Power BI and Excel reporting built for operational visibility</li>
+          <li>Data validation and monitoring that improve reporting confidence</li>
+          <li>Cross-functional support for technical and business teams</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
