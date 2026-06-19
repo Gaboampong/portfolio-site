@@ -4,27 +4,27 @@ import SectionHeading from './SectionHeading.astro';
 const impacts = [
   {
     index: '01',
+    title: 'Application Development',
+    body: 'Build applications and services backed by relational databases, from a collaborative Django final-year project to feature work that turns requirements into working software.',
+    tag: 'Python · Django · SQL',
+  },
+  {
+    index: '02',
     title: 'Operational Reporting Systems',
     body: 'Built reporting workflows in Power BI and Excel that made trends easier to spot and business decisions easier to support.',
     tag: 'Power BI · Excel · Reporting',
   },
   {
-    index: '02',
+    index: '03',
     title: 'Data Quality and Validation',
     body: 'Validated data across systems, detected inconsistencies, and improved confidence in downstream reporting.',
     tag: 'SQL · Validation · Accuracy',
   },
   {
-    index: '03',
+    index: '04',
     title: 'Monitoring and Visibility',
     body: 'Used Grafana and systems monitoring practices to make infrastructure behavior and operational signals easier to understand.',
     tag: 'Grafana · Monitoring · Integrity',
-  },
-  {
-    index: '04',
-    title: 'Collaborative Delivery',
-    body: 'Developed a Django-based final year project collaboratively, translating technical effort into a working outcome.',
-    tag: 'Django · Python · Teamwork',
   },
 ];
 ---
@@ -38,7 +38,7 @@ const impacts = [
 
   <div class="grid gap-5 md:grid-cols-2">
     {impacts.map((item) => (
-      <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+      <article class="reveal card-hover rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
         <span class="font-mono text-xs uppercase tracking-[0.24em] text-cyan-300/80">{item.index}</span>
         <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">{item.title}</h3>
         <p class="mt-4 text-sm leading-7 text-slate-300">{item.body}</p>

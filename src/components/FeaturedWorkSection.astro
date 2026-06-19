@@ -3,6 +3,20 @@ import SectionHeading from './SectionHeading.astro';
 
 const studies = [
   {
+    id: 'applications',
+    label: 'Applications',
+    title: 'Applications built on clean, well-structured data',
+    summary:
+      'Developed application features and services backed by relational databases, pairing solid SQL data access with practical business logic.',
+    outcome: 'Delivered working software that turns operational requirements into reliable, maintainable applications.',
+    stack: ['Python', 'Django', 'SQL', 'REST APIs'],
+    points: [
+      'Built application logic on top of well-designed, scalable database schemas.',
+      'Connected front-end needs to data through clean, optimized queries and services.',
+      'Focused on maintainability so features stay reliable as requirements grow.',
+    ],
+  },
+  {
     id: 'reporting',
     label: 'Reporting',
     title: 'Reporting workflows that make operations easier to read',
@@ -51,7 +65,7 @@ const studies = [
   <SectionHeading
     eyebrow="Featured Work"
     title="Case-study style proof, not just claims"
-    lead="These highlights show the kind of problems I am most useful on: reporting clarity, data quality, and operational visibility."
+    lead="These highlights show the kind of problems I am most useful on: building applications, reporting clarity, data quality, and operational visibility."
   />
 
   <div class="grid gap-5 lg:grid-cols-[0.36fr_0.64fr]">

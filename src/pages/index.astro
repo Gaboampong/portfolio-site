@@ -17,6 +17,7 @@ import ContactSection from '../components/ContactSection.astro';
         <a class="transition hover:text-white" href="#about">Profile</a>
         <a class="transition hover:text-white" href="#education">Education</a>
         <a class="transition hover:text-white" href="#experience">Experience</a>
+        <a class="transition hover:text-white" href="#featured-work">Work</a>
         <a class="transition hover:text-white" href="#projects">Impact</a>
         <a class="transition hover:text-white" href="#contact">Contact</a>
       </nav>
@@ -45,7 +46,7 @@ import ContactSection from '../components/ContactSection.astro';
       const context = canvas.getContext('2d');
       if (!context) return;
 
-      const glyphs = '0123456789SQLPYBI+-=*/';
+      const glyphs = '0123456789SQLPYDJ{}<>+-=*/;()';
       let columns = [];
       let width = 0;
       let height = 0;

@@ -4,12 +4,24 @@ import SectionHeading from './SectionHeading.astro';
 const timeline = [
   {
     period: 'Apr 2025 - Present',
-    role: 'Database Engineer',
+    role: 'Applications Developer & Database Engineer',
     company: 'DS7 Limited',
     outcomes: [
-      'Design and maintain scalable databases to support operational applications.',
-      'Write and optimize SQL queries for extraction, analysis, and reporting.',
-      'Build reporting outputs in Power BI and Excel while validating data quality across systems.',
+      'Building and maintaining applications backed by well-structured, scalable databases.',
+      'Developing application features and services that integrate SQL data access with business logic.',
+      'Building universes in SAP Information Design Tool to power Business Objects reports.',
+      'Writing and optimizing SQL queries for data extraction, analysis, and reporting.',
+      'Producing Power BI and Excel reports and validating data quality across systems.',
+    ],
+  },
+  {
+    period: 'Apr 2025 - Present',
+    role: 'Back Office Support',
+    company: 'Family Fountain Assets and Securities Limited',
+    outcomes: [
+      'Handling back office support for day-to-day operational and administrative processes.',
+      'Maintaining accurate records and reconciling data to keep account information consistent.',
+      'Preparing and validating operational reports for internal review and follow-up.',
     ],
   },
   {
@@ -17,9 +29,9 @@ const timeline = [
     role: 'Monitoring and Evaluation Trainee',
     company: 'Universal Engineering and Consultancy Services Limited',
     outcomes: [
-      'Analyzed fuel consumption, delivery schedules, and stock-level data.',
-      'Monitored systems for data accuracy and compliance across reporting workflows.',
-      'Supported corrective action on stock discrepancies and day-to-day IT issues.',
+      'Analyzing fuel consumption, delivery schedules, and stock-level data.',
+      'Monitoring systems for data accuracy and compliance across reporting workflows.',
+      'Supporting corrective action on stock discrepancies and day-to-day IT issues.',
     ],
   },
   {
@@ -27,9 +39,9 @@ const timeline = [
     role: 'Information Systems and Security Intern',
     company: 'Npontu Technologies Limited',
     outcomes: [
-      'Built Grafana dashboards to improve visibility into systems and data.',
-      'Researched cloud computing options to support scalability and decision-making.',
-      'Monitored systems for integrity and security-related issues.',
+      'Building Grafana dashboards to improve visibility into systems and data.',
+      'Researching cloud computing options to support scalability and decision-making.',
+      'Monitoring systems for integrity and security-related issues.',
     ],
   },
   {
@@ -37,22 +49,24 @@ const timeline = [
     role: 'IT and Automation Intern',
     company: 'Universal Engineering and Consultancy Services Limited',
     outcomes: [
-      'Supported research into automation and fuel-level indicator development.',
-      'Handled troubleshooting and data processing tasks tied to project delivery.',
-      'Configured and maintained network systems to improve technical performance.',
+      'Supporting research into automation and fuel-level indicator development.',
+      'Handling troubleshooting and data processing tasks tied to project delivery.',
+      'Configuring and maintaining network systems to improve technical performance.',
     ],
   },
 ];
 
-const analyticsSkills = ['SQL', 'Power BI', 'Excel', 'Power Query', 'Grafana', 'Tableau', 'SAP BO', 'Data Validation'];
-const engineeringSkills = ['Python', 'PostgreSQL', 'MySQL', 'SQLite', 'Docker Basics', 'GitHub', 'Systems Monitoring', 'Technical Documentation'];
+const developmentSkills = ['Python', 'Django', 'PHP', 'JavaScript', 'HTML & CSS', 'XAMPP', 'REST APIs', 'Git & GitHub', 'Docker Basics', 'Testing'];
+const databaseSkills = ['SQL', 'PostgreSQL', 'MySQL', 'SQLite', 'Schema Design', 'Query Optimization', 'Data Validation', 'Systems Monitoring'];
+const analyticsSkills = ['Power BI', 'Excel', 'Power Query', 'Grafana', 'Tableau', 'SAP BO', 'SAP Information Design Tool', 'Operational Reporting', 'Documentation'];
+const aiSkills = ['ChatGPT', 'Claude', 'GitHub Copilot', 'Gemini', 'Cursor', 'Prompt Engineering', 'AI-Assisted Development'];
 ---
 
 <section id="experience" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
   <SectionHeading
     eyebrow="Experience"
-    title="Built around reliability, visibility, and data quality"
-    lead="Each role sharpened the same core ability: taking imperfect operational information and turning it into something structured, accurate, and useful."
+    title="Built around reliable software, visibility, and data quality"
+    lead="Each role sharpened the same core ability: taking imperfect operational needs and turning them into working applications and structured, accurate, useful data."
   />
 
   <div class="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
@@ -79,29 +93,47 @@ const engineeringSkills = ['Python', 'PostgreSQL', 'MySQL', 'SQLite', 'Docker Ba
     </div>
 
     <div class="grid gap-5">
-      <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Analytics and BI</p>
+      <article class="reveal card-hover rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Application development</p>
         <div class="mt-5 flex flex-wrap gap-3">
-          {analyticsSkills.map((skill) => (
-            <span class="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
+          {developmentSkills.map((skill) => (
+            <span class="chip rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
           ))}
         </div>
       </article>
 
-      <article class="reveal rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Engineering stack</p>
+      <article class="reveal card-hover rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Databases &amp; engineering</p>
         <div class="mt-5 flex flex-wrap gap-3">
-          {engineeringSkills.map((skill) => (
-            <span class="rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
+          {databaseSkills.map((skill) => (
+            <span class="chip rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal card-hover rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">Analytics &amp; BI</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {analyticsSkills.map((skill) => (
+            <span class="chip rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal card-hover rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300/80">AI tools</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {aiSkills.map((skill) => (
+            <span class="chip rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-slate-200">{skill}</span>
           ))}
         </div>
       </article>
 
       <article class="reveal rounded-[2rem] border border-cyan-300/20 bg-cyan-300/10 p-6 backdrop-blur">
         <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-cyan-200">Professional edge</p>
-        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">Calm, detailed, and effective in real operational environments.</h3>
+        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">Calm, detailed, and effective from code to reporting.</h3>
         <p class="mt-4 text-sm leading-7 text-slate-200/90">
-          I bring structure to reporting and data workflows that would otherwise remain inconsistent, slow, or difficult to trust.
+          I bring structure to applications, data, and reporting workflows that would otherwise remain inconsistent, slow, or difficult to trust.
         </p>
       </article>
     </div>
