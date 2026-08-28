@@ -1,0 +1,76 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const education = [
+  {
+    degree: 'MSc Big Data Analytics',
+    school: 'University of Ghana',
+    logo: '/asserts/legon.png',
+    location: 'Accra, Ghana',
+    period: 'Oct 2025 - Sept 2026',
+    status: 'In progress',
+    note: 'Advanced study focused on analytics, large-scale data handling, and data-driven decision support.',
+    focus: ['Big Data', 'Machine Learning', 'Data Engineering', 'Decision Support'],
+  },
+  {
+    degree: 'BSc Computer Science',
+    school: 'Kwame Nkrumah University of Science and Technology',
+    logo: '/asserts/knust.png',
+    location: 'Kumasi, Ghana',
+    period: 'Sept 2019 - Nov 2023',
+    status: 'Completed',
+    note: 'Built the technical foundation across programming, systems, software development, and applied computing.',
+    focus: ['Software Development', 'Algorithms', 'Databases', 'Systems'],
+  },
+];
+---
+
+<section id="education" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Education"
+    title="Academic grounding for software and data work"
+    lead="My education combines computing fundamentals with specialized analytics training, which is why my work sits comfortably between application development, engineering discipline, and business insight."
+  />
+
+  <div class="grid gap-5 md:grid-cols-2">
+    {education.map((item) => (
+      <article class="reveal card-hover accent-bar group rounded-3xl border border-hairline bg-paper p-7 pl-8 shadow-sm">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-4">
+            <span class="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-hairline bg-white p-1.5 shadow-sm">
+              <img src={item.logo} alt={`${item.school} crest`} width="48" height="48" loading="lazy" class="h-full w-full object-contain" />
+            </span>
+            <div>
+              <p class="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-ledger">{item.period}</p>
+              <h3 class="mt-1.5 text-2xl font-semibold tracking-tight text-ink">{item.degree}</h3>
+            </div>
+          </div>
+          <span class:list={[
+            'shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]',
+            item.status === 'In progress'
+              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+              : 'border-hairline bg-paper-alt text-slate-500'
+          ]}>
+            {item.status}
+          </span>
+        </div>
+
+        <p class="mt-4 text-sm font-medium text-brass">{item.school}</p>
+        <p class="mt-1 flex items-center gap-1.5 text-sm text-slate-500">
+          <svg class="h-3.5 w-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="12" cy="10" r="2.5" />
+          </svg>
+          {item.location}
+        </p>
+        <p class="mt-5 text-sm leading-7 text-muted">{item.note}</p>
+
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          {item.focus.map((area) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-3.5 py-1.5 text-xs font-medium text-slate-600">{area}</span>
+          ))}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import FeaturedWorkSection from '../components/FeaturedWorkSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import ImpactSection from '../components/ImpactSection.astro';
+---
+
+<Layout
+  title="Projects | Gabriel Adjei Boampong"
+  description="Case studies, disclosed projects, and measurable impact from Gabriel Adjei Boampong's application development and data engineering work."
+>
+  <SiteHeader current="/projects" />
+
+  <main>
+    <FeaturedWorkSection />
+    <ProjectsSection />
+    <ImpactSection />
+  </main>
+
+  <SiteFooter />
+</Layout>

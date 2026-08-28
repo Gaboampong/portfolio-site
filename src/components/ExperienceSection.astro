@@ -1,0 +1,141 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const timeline = [
+  {
+    period: 'Apr 2025 - Present',
+    role: 'Applications Developer & Database Engineer',
+    company: 'DS7 Limited',
+    outcomes: [
+      'Building and maintaining applications backed by well-structured, scalable databases.',
+      'Developing application features and services that integrate SQL data access with business logic.',
+      'Building universes in SAP Information Design Tool to power Business Objects reports.',
+      'Writing and optimizing SQL queries for data extraction, analysis, and reporting.',
+      'Producing Power BI and Excel reports and validating data quality across systems.',
+    ],
+  },
+  {
+    period: 'Apr 2025 - Present',
+    role: 'Back Office Support',
+    company: 'Family Fountain Assets and Securities Limited',
+    outcomes: [
+      'Handling back office support for day-to-day operational and administrative processes.',
+      'Maintaining accurate records and reconciling data to keep account information consistent.',
+      'Preparing and validating operational reports for internal review and follow-up.',
+    ],
+  },
+  {
+    period: 'Nov 2023 - Sept 2024',
+    role: 'Monitoring and Evaluation Trainee',
+    company: 'Universal Engineering and Consultancy Services Limited',
+    outcomes: [
+      'Analyzing fuel consumption, delivery schedules, and stock-level data.',
+      'Monitoring systems for data accuracy and compliance across reporting workflows.',
+      'Supporting corrective action on stock discrepancies and day-to-day IT issues.',
+    ],
+  },
+  {
+    period: 'Oct 2022 - Dec 2022',
+    role: 'Information Systems and Security Intern',
+    company: 'Npontu Technologies Limited',
+    outcomes: [
+      'Building Grafana dashboards to improve visibility into systems and data.',
+      'Researching cloud computing options to support scalability and decision-making.',
+      'Monitoring systems for integrity and security-related issues.',
+    ],
+  },
+  {
+    period: 'Nov 2021 - Dec 2021',
+    role: 'IT and Automation Intern',
+    company: 'Universal Engineering and Consultancy Services Limited',
+    outcomes: [
+      'Supporting research into automation and fuel-level indicator development.',
+      'Handling troubleshooting and data processing tasks tied to project delivery.',
+      'Configuring and maintaining network systems to improve technical performance.',
+    ],
+  },
+];
+
+const developmentSkills = ['Python', 'Django', 'PHP', 'JavaScript', 'HTML & CSS', 'XAMPP', 'REST APIs', 'Git & GitHub', 'Docker Basics', 'Testing'];
+const databaseSkills = ['SQL', 'PostgreSQL', 'MySQL', 'SQLite', 'Schema Design', 'Query Optimization', 'Data Validation', 'Systems Monitoring'];
+const analyticsSkills = ['Power BI', 'Excel', 'Power Query', 'Grafana', 'Tableau', 'SAP BO', 'SAP Information Design Tool', 'Operational Reporting', 'Documentation'];
+const aiSkills = ['ChatGPT', 'Claude', 'GitHub Copilot', 'Gemini', 'Cursor', 'Prompt Engineering', 'AI-Assisted Development'];
+---
+
+<section id="experience" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Experience"
+    title="Built around reliable software, visibility, and data quality"
+    lead="Each role sharpened the same core ability: taking imperfect operational needs and turning them into working applications and structured, accurate, useful data."
+  />
+
+  <div class="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
+    <div class="reveal rounded-3xl border border-hairline bg-paper p-7 shadow-sm">
+      <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Career path</p>
+      <div class="mt-6 space-y-6">
+        {timeline.map((item) => (
+          <article class="relative border-l border-hairline pl-6">
+            <span class="absolute left-[-5px] top-1 h-2.5 w-2.5 rounded-full border-2 border-paper bg-blue"></span>
+            <p class="font-mono text-xs uppercase tracking-[0.24em] text-ledger">{item.period}</p>
+            <h3 class="mt-3 text-xl font-semibold text-ink">{item.role}</h3>
+            <p class="mt-1 text-sm font-medium text-brass">{item.company}</p>
+            <ul class="mt-4 space-y-2 text-sm leading-7 text-muted">
+              {item.outcomes.map((outcome) => (
+                <li class="flex gap-3">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue"></span>
+                  <span>{outcome}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid gap-5">
+      <article class="reveal card-hover rounded-3xl border border-hairline bg-paper p-6 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Application development</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {developmentSkills.map((skill) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-4 py-2 text-sm text-slate-600">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal card-hover rounded-3xl border border-hairline bg-paper p-6 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Databases &amp; engineering</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {databaseSkills.map((skill) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-4 py-2 text-sm text-slate-600">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal card-hover rounded-3xl border border-hairline bg-paper p-6 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Analytics &amp; BI</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {analyticsSkills.map((skill) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-4 py-2 text-sm text-slate-600">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal card-hover rounded-3xl border border-hairline bg-paper p-6 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">AI tools</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          {aiSkills.map((skill) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-4 py-2 text-sm text-slate-600">{skill}</span>
+          ))}
+        </div>
+      </article>
+
+      <article class="reveal rounded-3xl border border-ledger/15 bg-ledger p-6 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-brass">Professional edge</p>
+        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-white">Calm, detailed, and effective from code to reporting.</h3>
+        <p class="mt-4 text-sm leading-7 text-white/80">
+          I bring structure to applications, data, and reporting workflows that would otherwise remain inconsistent, slow, or difficult to trust.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>

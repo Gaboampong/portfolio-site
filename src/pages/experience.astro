@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import ExperienceSection from '../components/ExperienceSection.astro';
+---
+
+<Layout
+  title="Experience | Gabriel Adjei Boampong"
+  description="Career history and skills of Gabriel Adjei Boampong across application development, database engineering, and BI reporting."
+>
+  <SiteHeader current="/experience" />
+
+  <main>
+    <ExperienceSection />
+  </main>
+
+  <SiteFooter />
+</Layout>

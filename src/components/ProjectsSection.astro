@@ -1,0 +1,70 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const projects = [
+  {
+    title: 'Enterprise MIS & Intranet Management Systems',
+    role: 'Full-Stack Developer & Systems Architect',
+    description:
+      'Designed and developed enterprise MIS and intranet platforms for organizational operations. The systems centralize internal processes, employee and departmental information, communications, administration, and operational workflows within secure, role-based environments. I worked across application development, database architecture, business logic, user interfaces, permissions, and system workflows to deliver practical internal platforms tailored to organizational requirements.',
+    skills: ['PHP', 'PostgreSQL', 'Database Design', 'Full-Stack Development', 'Web Application Development'],
+  },
+  {
+    title: 'Real-Time Business Intelligence Dashboard',
+    role: 'Application Developer & Data Analyst',
+    description:
+      'Developed a real-time dashboard application that connects directly to a source database and transforms live operational data into actionable business intelligence. The solution provides real-time KPIs, interactive visualizations, trends, and detailed data views, allowing users to monitor performance and access current information without depending on manually prepared reports. I worked on the database integration, data retrieval, application logic, dashboard interface, and visualization of operational metrics.',
+    skills: ['SQL', 'Data Analysis', 'Data Visualization', 'Database Integration', 'Dashboard Development'],
+  },
+  {
+    title: 'Business Website Design & Development',
+    role: 'Web Designer & Full-Stack Developer',
+    description:
+      'Designed and developed modern, responsive websites for businesses and brands, translating business requirements and brand identity into professional digital experiences. Projects included custom layouts, responsive interfaces, service and product presentation, interactive functionality, contact and lead-generation features, and optimized experiences across desktop and mobile devices.',
+    skills: ['Web Development', 'Web Design', 'Responsive Design', 'UI/UX Design', 'Front-End Development'],
+    link: { label: 'Live site: kuchillgh.com', href: 'https://kuchillgh.com' },
+  },
+  {
+    title: 'Database Engineering & Operational Reporting',
+    role: 'Database Engineer & Data Analyst',
+    description:
+      'Designed and supported database-driven reporting solutions that turn operational data into reliable information for business users. Work included relational database design, SQL development and optimization, data extraction, validation, reporting workflows, and the development of dashboards and analytical outputs. The focus was on creating dependable data foundations and reporting processes that stakeholders could use confidently for operational review and decision-making.',
+    skills: ['SQL', 'PostgreSQL', 'Database Engineering', 'Power BI', 'Data Validation'],
+  },
+];
+---
+
+<section id="disclosed-projects" class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+  <SectionHeading
+    eyebrow="Projects"
+    title="Selected projects across the stack"
+    lead="A closer look at platforms, dashboards, and products I've built end-to-end — from internal business systems to client-facing websites."
+  />
+
+  <div class="grid gap-5 md:grid-cols-2">
+    {projects.map((project) => (
+      <article class="reveal card-hover rounded-3xl border border-hairline bg-paper p-7 shadow-sm">
+        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">{project.role}</p>
+        <h3 class="mt-4 text-2xl font-semibold tracking-tight text-ink">{project.title}</h3>
+        <p class="mt-4 text-sm leading-7 text-muted">{project.description}</p>
+
+        {project.link && (
+          <a
+            href={project.link.href}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-5 inline-flex items-center gap-2 rounded-2xl border border-brass/25 bg-brass/8 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brass transition hover:border-brass/40 hover:bg-brass/12"
+          >
+            {project.link.label}
+          </a>
+        )}
+
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          {project.skills.map((skill) => (
+            <span class="chip rounded-full border border-hairline bg-paper-alt px-3.5 py-1.5 text-xs font-medium text-slate-600">{skill}</span>
+          ))}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

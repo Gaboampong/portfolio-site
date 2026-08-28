@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import EducationSection from '../components/EducationSection.astro';
+---
+
+<Layout
+  title="Education | Gabriel Adjei Boampong"
+  description="Academic background of Gabriel Adjei Boampong — MSc Big Data Analytics at the University of Ghana and BSc Computer Science at KNUST."
+>
+  <SiteHeader current="/education" />
+
+  <main>
+    <EducationSection />
+  </main>
+
+  <SiteFooter />
+</Layout>
