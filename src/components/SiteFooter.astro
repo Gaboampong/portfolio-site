@@ -1,6 +1,46 @@
 ---
+const links = [
+  { href: '/', label: 'Profile' },
+  { href: '/education', label: 'Education' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
+];
 ---
 
-<footer class="border-t border-hairline px-5 py-8 text-center text-sm text-slate-500 sm:px-6 lg:px-8">
-  <p>Copyright &#169; 2026 Gabriel Adjei Boampong. All Rights Reserved.</p>
+<footer class="border-t border-hairline bg-paper-alt">
+  <div class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+      <a href="/" class="inline-flex items-center">
+        <img src="/asserts/gabriel-adjei-boampong-logo.svg" alt="Gabriel Adjei Boampong" class="h-9 w-auto" />
+      </a>
+
+      <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-slate-600">
+        {links.map((link) => (
+          <a href={link.href} class="transition hover:text-ledger">{link.label}</a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="https://www.linkedin.com/in/gabrielboampong"
+          class="grid h-9 w-9 place-items-center rounded-full border border-hairline bg-paper transition hover:border-blue/40"
+          aria-label="LinkedIn"
+        >
+          <img src="/asserts/linkedin.png" alt="" class="h-4 w-4" />
+        </a>
+        <a
+          href="https://github.com/Gaboampong"
+          class="grid h-9 w-9 place-items-center rounded-full border border-hairline bg-paper transition hover:border-blue/40"
+          aria-label="GitHub"
+        >
+          <img src="/asserts/github.png" alt="" class="h-4 w-4" />
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-hairline pt-6 text-center text-sm text-slate-500">
+      <p>Copyright &#169; 2026 Gabriel Adjei Boampong. All Rights Reserved.</p>
+    </div>
+  </div>
 </footer>
