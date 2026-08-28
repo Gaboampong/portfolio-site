@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" role="img" aria-labelledby="title desc">
+  <title id="title">Gabriel Adjei Boampong logo</title>
+  <desc id="desc">GA monogram with the full Gabriel Adjei Boampong wordmark.</desc>
+
+  <!-- Monogram -->
+  <g transform="translate(8 8)">
+    <path
+      d="M57 18
+         C49 11 40 8 29 8
+         C13 8 4 19 4 52
+         C4 84 15 104 33 104
+         C44 104 53 99 60 92
+         L60 51 L34 51 L34 67 L45 67
+         L45 82 C42 85 38 87 33 87
+         C23 87 18 76 18 52
+         C18 30 23 22 32 22
+         C40 22 47 25 52 31 Z"
+      fill="#14213D"/>
+
+    <path
+      d="M76 104 L103 8 L123 8 L150 104 L133 104 L127 82 L99 82 L93 104 Z
+         M103 67 L123 67 L113 27 Z"
+      fill="#C99722"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(178 25)">
+    <text x="0" y="32"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="27"
+      font-weight="700"
+      letter-spacing="0.5"
+      fill="#14213D">GABRIEL ADJEI</text>
+
+    <text x="0" y="69"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="27"
+      font-weight="700"
+      letter-spacing="0.5"
+      fill="#C99722">BOAMPONG</text>
+  </g>
+</svg>

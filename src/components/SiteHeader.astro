@@ -15,18 +15,21 @@ const links = [
 
 <header class="sticky top-0 z-30 border-b border-hairline bg-paper/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-6 lg:px-8">
-    <a href="/" class="text-lg font-semibold tracking-tight text-ink">Gabriel Adjei Boampong</a>
+    <a href="/" class="inline-flex items-center">
+      <img src="/asserts/gabriel-adjei-boampong-logo.svg" alt="Gabriel Adjei Boampong" class="h-10 w-auto" />
+    </a>
 
     <nav class="hidden gap-8 text-sm text-slate-600 md:flex">
       {links.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            'transition hover:text-ledger',
-            current === link.href ? 'font-semibold text-ledger' : ''
-          ]}
-        >
-          {link.label}
+        <a href={link.href} class="group relative flex flex-col items-center gap-1.5 transition hover:text-ledger">
+          <span class:list={['transition', current === link.href ? 'font-semibold text-ledger' : '']}>{link.label}</span>
+          <span
+            class:list={[
+              'h-1 w-1 rounded-full transition',
+              current === link.href ? 'bg-brass' : 'bg-transparent'
+            ]}
+            aria-hidden="true"
+          ></span>
         </a>
       ))}
     </nav>
@@ -34,13 +37,16 @@ const links = [
     <a
       href="/contact"
       class:list={[
-        'hidden rounded-full border px-4 py-2 text-sm font-semibold transition md:inline-flex',
+        'hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition md:inline-flex',
         current === '/contact'
-          ? 'border-blue bg-blue text-white'
-          : 'border-hairline text-ink hover:border-blue/40 hover:bg-blue/5'
+          ? 'bg-brass text-ink'
+          : 'bg-ledger text-white hover:bg-ledger/90'
       ]}
     >
       Contact Me
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
     </a>
 
     <button

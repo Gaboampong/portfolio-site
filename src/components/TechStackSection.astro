@@ -1,0 +1,14 @@
+---
+const tools = ['Python', 'Django', 'PHP', 'JavaScript', 'SQL', 'PostgreSQL', 'Power BI', 'Grafana'];
+---
+
+<section class="mx-auto max-w-6xl px-5 py-8 sm:px-6 lg:px-8">
+  <div class="reveal flex flex-wrap items-center gap-3">
+    <p class="font-mono text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Tech I Work With</p>
+    <div class="flex flex-1 flex-wrap gap-2.5">
+      {tools.map((tool) => (
+        <span class="chip rounded-full border border-hairline bg-paper-alt px-4 py-2 text-sm text-slate-600">{tool}</span>
+      ))}
+    </div>
+  </div>
+</section>

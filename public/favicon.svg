@@ -1,23 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="GB monogram">
-  <defs>
-    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0a1628" />
-      <stop offset="1" stop-color="#020817" />
-    </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#67e8f9" />
-      <stop offset="0.6" stop-color="#a5f3fc" />
-      <stop offset="1" stop-color="#fcd34d" />
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="GA monogram">
+  <rect x="6" y="6" width="116" height="116" rx="28" fill="#14213D" />
 
-  <rect x="6" y="6" width="116" height="116" rx="28" fill="url(#tile)" stroke="#67e8f9" stroke-opacity="0.35" stroke-width="2" />
-
-  <!-- monogram: G + B -->
-  <g fill="none" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(14.5 35.65) scale(0.9)">
     <!-- G -->
-    <path d="M58 40 A24 24 0 1 0 58 88 L58 66 L44 66" />
-    <!-- B -->
-    <path d="M74 40 L74 88 L90 88 A12 12 0 0 0 90 64 L74 64 M90 64 A12 12 0 0 0 90 40 L74 40" />
+    <path
+      d="M43 12
+         C37 7 30 5 22 5
+         C10 5 3 13 3 31
+         C3 49 11 58 24 58
+         C32 58 39 55 44 51
+         L44 31 L25 31 L25 39 L35 39
+         L35 46 C32 48 29 49 25 49
+         C17 49 13 43 13 31
+         C13 19 17 14 24 14
+         C30 14 34 16 38 20 Z"
+      fill="#ffffff"/>
+
+    <!-- A -->
+    <path
+      d="M56 57 L75 6 L88 6 L107 57 L96 57 L92 45 L70 45 L66 57 Z
+         M73 36 L89 36 L81 13 Z"
+      fill="#C99722"/>
   </g>
 </svg>

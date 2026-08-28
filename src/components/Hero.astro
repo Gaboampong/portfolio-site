@@ -13,19 +13,37 @@ const proofPoints = [
     value: 'Application development, SQL databases, and BI reporting',
   },
 ];
+
+const codeIcon = '<path d="M8 9L4.5 12 8 15M16 9l3.5 3-3.5 3M14 5l-4 14" stroke-linecap="round" stroke-linejoin="round" />';
+const downloadIcon = '<path d="M12 3v12m0 0l-4-4m4 4l4-4M4 19h16" stroke-linecap="round" stroke-linejoin="round" />';
+const mailIcon = '<rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" stroke-linecap="round" stroke-linejoin="round" />';
+const pinIcon = '<path d="M12 21s-7-5.3-7-11a7 7 0 1 1 14 0c0 5.7-7 11-7 11Z" stroke-linecap="round" stroke-linejoin="round" /><circle cx="12" cy="10" r="2.5" />';
 ---
 
 <section id="top" class="relative overflow-hidden">
-  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-8 pt-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pt-20">
-    <div class="reveal rounded-3xl border border-hairline bg-paper p-7 shadow-sm xl:p-9">
-      <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Applications Developer &amp; Database Engineer</p>
-      <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
-        Gabriel <span class="text-brass">Adjei Boampong</span>
+  <div class="blob pointer-events-none absolute -right-20 -top-20 h-72 w-72 bg-blue/6" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute -left-6 top-24 hidden h-24 w-24 bg-[radial-gradient(circle,rgba(27,47,94,0.18)_1.5px,transparent_1.5px)] bg-[length:12px_12px] sm:block"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-5 pb-10 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+    <div class="reveal rounded-3xl border border-hairline bg-paper p-7 shadow-sm xl:p-10">
+      <span class="inline-flex items-center gap-2 rounded-full border border-hairline bg-paper-alt py-1.5 pl-1.5 pr-4">
+        <span class="grid h-6 w-6 place-items-center rounded-full bg-blue/10 text-ledger">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={codeIcon} />
+        </span>
+        <span class="font-mono text-[11px] font-semibold uppercase tracking-[0.22em] text-ledger">Applications Developer &amp; Database Engineer</span>
+      </span>
+
+      <h1 class="mt-5 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+        Hi, I&rsquo;m Gabriel <span class="text-brass">Adjei</span> Boampong
       </h1>
-      <p class="mt-4 max-w-2xl text-lg font-medium text-ink/85">
-        I build dependable applications and reliable data systems, software that works and numbers teams can trust.
+      <p class="mt-4 max-w-3xl text-lg font-medium text-ink/85">
+        I build dependable applications and reliable data systems, software that <span class="text-ledger">works</span> and numbers teams can <span class="text-ledger">trust</span>.
       </p>
-      <p class="mt-5 max-w-2xl text-base leading-8 text-muted">
+      <p class="mt-5 max-w-3xl text-base leading-8 text-muted">
         Based in Accra, Ghana, I work across application development, database engineering, BI reporting, and data validation.
         My focus is simple: ship software that solves real problems, keep data dependable, and give stakeholders better visibility.
       </p>
@@ -35,47 +53,47 @@ const proofPoints = [
           href="/asserts/Gabriel_Adjei_Boampong_CV.pdf"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center justify-center rounded-full bg-blue px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-ledger"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-blue px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-ledger"
         >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={downloadIcon} />
           Download CV
         </a>
         <a
           href="/contact"
-          class="inline-flex items-center justify-center rounded-full border border-hairline bg-paper px-5 py-3 text-sm font-semibold text-ink transition hover:border-blue/40 hover:bg-blue/5"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline bg-paper px-5 py-3 text-sm font-semibold text-ink transition hover:border-blue/40 hover:bg-blue/5"
         >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={mailIcon} />
           Contact Me
         </a>
       </div>
 
-      <div class="mt-6 flex flex-wrap gap-3 text-sm">
-        <a class="rounded-full border border-hairline bg-paper-alt px-4 py-2 text-slate-600 transition hover:border-blue/40 hover:text-ledger" href="https://www.linkedin.com/in/gabrielboampong">LinkedIn</a>
-        <a class="rounded-full border border-hairline bg-paper-alt px-4 py-2 text-slate-600 transition hover:border-blue/40 hover:text-ledger" href="https://github.com/Gaboampong">GitHub</a>
-        <span class="rounded-full border border-brass/30 bg-brass/8 px-4 py-2 text-brass">Accra, Ghana</span>
+      <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+        <span class="text-slate-500">Connect with me</span>
+        <a class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-paper-alt px-4 py-2 text-slate-600 transition hover:border-blue/40 hover:text-ledger" href="https://www.linkedin.com/in/gabrielboampong">
+          <img src="/asserts/linkedin.png" alt="" class="h-3.5 w-3.5" />
+          LinkedIn
+        </a>
+        <a class="inline-flex items-center gap-1.5 rounded-full border border-hairline bg-paper-alt px-4 py-2 text-slate-600 transition hover:border-blue/40 hover:text-ledger" href="https://github.com/Gaboampong">
+          <img src="/asserts/github.png" alt="" class="h-3.5 w-3.5" />
+          GitHub
+        </a>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-brass/30 bg-brass/8 px-4 py-2 text-brass">
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={pinIcon} />
+          Accra, Ghana
+        </span>
+        <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-emerald-700">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-500" aria-hidden="true"></span>
+          Available for new opportunities
+        </span>
       </div>
 
-      <div class="mt-7 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+      <div class="mt-7 grid gap-3 md:grid-cols-3">
         {proofPoints.map((point) => (
           <div class="card-hover rounded-xl border border-hairline bg-paper-alt px-4 py-3.5">
             <p class="font-mono text-[11px] uppercase tracking-[0.22em] text-ledger">{point.label}</p>
             <p class="mt-1.5 text-sm font-medium leading-6 text-ink/85">{point.value}</p>
           </div>
         ))}
-      </div>
-    </div>
-
-    <div class="reveal relative mx-auto w-full max-w-sm lg:max-w-none">
-      <div class="blob absolute -right-6 -top-8 h-56 w-56 bg-blue/12 sm:h-72 sm:w-72" aria-hidden="true"></div>
-      <div class="blob absolute -bottom-6 -left-6 h-28 w-28 bg-brass/12" aria-hidden="true"></div>
-      <span class="absolute -left-3 top-12 h-2.5 w-2.5 rounded-full bg-brass" aria-hidden="true"></span>
-      <span class="absolute -right-2 bottom-20 h-2 w-2 rounded-full bg-blue" aria-hidden="true"></span>
-
-      <div class="relative overflow-hidden rounded-[2.5rem] border border-hairline bg-paper shadow-sm">
-        <img
-          src="/asserts/myPic.JPG.jpeg"
-          alt="Portrait of Gabriel Adjei Boampong"
-          class="h-[380px] w-full object-cover object-top sm:h-[440px]"
-          loading="eager"
-        />
       </div>
     </div>
   </div>

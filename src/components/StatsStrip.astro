@@ -1,20 +1,29 @@
 ---
+const codeIcon = '<path d="M8 9L4.5 12 8 15M16 9l3.5 3-3.5 3M14 5l-4 14" stroke-linecap="round" stroke-linejoin="round" />';
+const peopleIcon = '<circle cx="9" cy="8" r="3" /><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke-linecap="round" /><circle cx="17" cy="9" r="2.5" /><path d="M15.5 14c2.8.4 5 2.4 5 6" stroke-linecap="round" />';
+const chartIcon = '<path d="M5 20V12M12 20V6M19 20v-9" stroke-linecap="round" /><path d="M3 20h18" stroke-linecap="round" />';
+
 const stats = [
-  { value: 20, suffix: '%', label: 'workflow efficiency improvement' },
-  { value: 4, suffix: '', label: 'roles across development, analytics, and systems' },
-  { value: 12, suffix: '+', label: 'tools across app development, SQL, and BI' },
+  { value: 20, suffix: '%', label: 'workflow efficiency improvement', icon: chartIcon },
+  { value: 4, suffix: '', label: 'roles across development, analytics, and systems', icon: peopleIcon },
+  { value: 12, suffix: '+', label: 'tools across app development, SQL, and BI', icon: codeIcon },
 ];
 ---
 
 <section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
-  <div class="reveal grid gap-6 rounded-3xl border border-hairline bg-paper-alt p-7 sm:grid-cols-3 sm:divide-x sm:divide-hairline">
+  <div class="reveal grid gap-6 rounded-3xl bg-ledger p-7 sm:grid-cols-3 sm:divide-x sm:divide-white/12">
     {stats.map((stat) => (
-      <div class="px-2 text-center sm:px-6">
-        <div class="flex items-center justify-center gap-1">
-          <span class="countup text-3xl font-bold tracking-tight text-ink" data-count={stat.value}>0</span>
-          <span class="text-sm font-semibold text-blue">{stat.suffix}</span>
+      <div class="flex items-center gap-4 px-2 sm:px-6">
+        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-white/15 text-brass">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" set:html={stat.icon} />
+        </span>
+        <div>
+          <div class="flex items-baseline gap-1">
+            <span class="countup text-2xl font-bold tracking-tight text-white" data-count={stat.value}>0</span>
+            <span class="text-sm font-semibold text-brass">{stat.suffix}</span>
+          </div>
+          <p class="mt-1 text-sm leading-5 text-white/70">{stat.label}</p>
         </div>
-        <p class="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
       </div>
     ))}
   </div>
