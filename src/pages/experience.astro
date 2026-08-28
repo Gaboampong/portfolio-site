@@ -11,7 +11,8 @@ import ExperienceSection from '../components/ExperienceSection.astro';
 >
   <SiteHeader current="/experience" />
 
-  <main>
+  <main class="relative overflow-hidden">
+    <div class="blob pointer-events-none absolute -right-16 -top-16 h-64 w-64 bg-brass/6" aria-hidden="true"></div>
     <ExperienceSection />
   </main>
 

@@ -10,7 +10,6 @@ const links = [
   { href: '/education', label: 'Education' },
   { href: '/experience', label: 'Experience' },
   { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact' },
 ];
 ---
 
@@ -31,6 +30,18 @@ const links = [
         </a>
       ))}
     </nav>
+
+    <a
+      href="/contact"
+      class:list={[
+        'hidden rounded-full border px-4 py-2 text-sm font-semibold transition md:inline-flex',
+        current === '/contact'
+          ? 'border-blue bg-blue text-white'
+          : 'border-hairline text-ink hover:border-blue/40 hover:bg-blue/5'
+      ]}
+    >
+      Contact Me
+    </a>
 
     <button
       type="button"
@@ -61,6 +72,15 @@ const links = [
         {link.label}
       </a>
     ))}
+    <a
+      href="/contact"
+      class:list={[
+        'block rounded-lg px-3 py-2.5 text-sm transition',
+        current === '/contact' ? 'bg-blue/8 font-semibold text-ledger' : 'text-slate-600 hover:bg-paper-alt hover:text-ledger'
+      ]}
+    >
+      Contact Me
+    </a>
   </nav>
 </header>
 

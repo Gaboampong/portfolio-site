@@ -35,6 +35,11 @@ body {
     #ffffff;
 }
 
+/* Organic accent shape used behind hero/portrait imagery */
+.blob {
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);

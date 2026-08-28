@@ -13,7 +13,8 @@ import ImpactSection from '../components/ImpactSection.astro';
 >
   <SiteHeader current="/projects" />
 
-  <main>
+  <main class="relative overflow-hidden">
+    <div class="blob pointer-events-none absolute -right-16 -top-16 h-64 w-64 bg-blue/6" aria-hidden="true"></div>
     <FeaturedWorkSection />
     <ProjectsSection />
     <ImpactSection />

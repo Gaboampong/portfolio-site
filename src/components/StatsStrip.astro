@@ -1,0 +1,21 @@
+---
+const stats = [
+  { value: 20, suffix: '%', label: 'workflow efficiency improvement' },
+  { value: 4, suffix: '', label: 'roles across development, analytics, and systems' },
+  { value: 12, suffix: '+', label: 'tools across app development, SQL, and BI' },
+];
+---
+
+<section class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+  <div class="reveal grid gap-6 rounded-3xl border border-hairline bg-paper-alt p-7 sm:grid-cols-3 sm:divide-x sm:divide-hairline">
+    {stats.map((stat) => (
+      <div class="px-2 text-center sm:px-6">
+        <div class="flex items-center justify-center gap-1">
+          <span class="countup text-3xl font-bold tracking-tight text-ink" data-count={stat.value}>0</span>
+          <span class="text-sm font-semibold text-blue">{stat.suffix}</span>
+        </div>
+        <p class="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
+      </div>
+    ))}
+  </div>
+</section>

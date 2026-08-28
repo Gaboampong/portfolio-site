@@ -11,7 +11,8 @@ import EducationSection from '../components/EducationSection.astro';
 >
   <SiteHeader current="/education" />
 
-  <main>
+  <main class="relative overflow-hidden">
+    <div class="blob pointer-events-none absolute -right-16 -top-16 h-64 w-64 bg-blue/6" aria-hidden="true"></div>
     <EducationSection />
   </main>
 

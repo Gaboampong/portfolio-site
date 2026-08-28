@@ -1,10 +1,4 @@
 ---
-const stats = [
-  { value: 20, suffix: '%', label: 'workflow efficiency improvement' },
-  { value: 4, suffix: '', label: 'roles across development, analytics, and systems' },
-  { value: 12, suffix: '+', label: 'tools across app development, SQL, and BI' },
-];
-
 const proofPoints = [
   {
     label: 'Current role',
@@ -21,8 +15,8 @@ const proofPoints = [
 ];
 ---
 
-<section id="top" class="relative">
-  <div class="mx-auto grid max-w-6xl items-center gap-8 px-5 pb-8 pt-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:pt-20">
+<section id="top" class="relative overflow-hidden">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-8 pt-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:px-8 lg:pt-20">
     <div class="reveal rounded-3xl border border-hairline bg-paper p-7 shadow-sm xl:p-9">
       <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Applications Developer &amp; Database Engineer</p>
       <h1 class="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
@@ -69,30 +63,19 @@ const proofPoints = [
       </div>
     </div>
 
-    <div class="reveal grid gap-4">
-      <div class="rounded-3xl border border-hairline bg-paper p-6 shadow-sm">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">At a glance</p>
-        <div class="mt-5 grid gap-4">
-          {stats.map((stat) => (
-            <div class="card-hover rounded-2xl border border-hairline bg-paper-alt p-4">
-              <div class="flex items-end gap-1">
-                <span class="countup text-3xl font-bold tracking-tight text-ink" data-count={stat.value}>0</span>
-                <span class="pb-1 text-sm font-semibold text-blue">{stat.suffix}</span>
-              </div>
-              <p class="mt-2 text-sm leading-6 text-muted">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+    <div class="reveal relative mx-auto w-full max-w-sm lg:max-w-none">
+      <div class="blob absolute -right-6 -top-8 h-56 w-56 bg-blue/12 sm:h-72 sm:w-72" aria-hidden="true"></div>
+      <div class="blob absolute -bottom-6 -left-6 h-28 w-28 bg-brass/12" aria-hidden="true"></div>
+      <span class="absolute -left-3 top-12 h-2.5 w-2.5 rounded-full bg-brass" aria-hidden="true"></span>
+      <span class="absolute -right-2 bottom-20 h-2 w-2 rounded-full bg-blue" aria-hidden="true"></span>
 
-      <div class="rounded-3xl border border-hairline bg-paper-alt p-6">
-        <p class="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-ledger">Strengths</p>
-        <ul class="mt-4 space-y-3 text-sm leading-7 text-muted">
-          <li>Application development across a range of modern stacks, backed by well-structured databases</li>
-          <li>SQL querying, optimization, and relational database design</li>
-          <li>Data analytics and BI reporting that turn raw data into clear insight</li>
-          <li>Data validation and monitoring that improve reporting confidence</li>
-        </ul>
+      <div class="relative overflow-hidden rounded-[2.5rem] border border-hairline bg-paper shadow-sm">
+        <img
+          src="/asserts/myPic.JPG.jpeg"
+          alt="Portrait of Gabriel Adjei Boampong"
+          class="h-[380px] w-full object-cover object-top sm:h-[440px]"
+          loading="eager"
+        />
       </div>
     </div>
   </div>
