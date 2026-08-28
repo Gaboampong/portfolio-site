@@ -17,6 +17,7 @@ const links = [
 <header class="sticky top-0 z-30 border-b border-hairline bg-paper/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-6 lg:px-8">
     <a href="/" class="text-lg font-semibold tracking-tight text-ink">Gabriel Adjei Boampong</a>
+
     <nav class="hidden gap-8 text-sm text-slate-600 md:flex">
       {links.map((link) => (
         <a
@@ -30,5 +31,59 @@ const links = [
         </a>
       ))}
     </nav>
+
+    <button
+      type="button"
+      id="mobile-menu-button"
+      class="inline-flex items-center justify-center rounded-lg border border-hairline p-2 text-ink transition hover:border-blue/40 md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Toggle navigation menu"
+    >
+      <svg id="menu-icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
+      <svg id="menu-icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
   </div>
+
+  <nav id="mobile-menu" class="hidden space-y-1 border-t border-hairline px-5 py-3 sm:px-6 md:hidden">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class:list={[
+          'block rounded-lg px-3 py-2.5 text-sm transition',
+          current === link.href ? 'bg-blue/8 font-semibold text-ledger' : 'text-slate-600 hover:bg-paper-alt hover:text-ledger'
+        ]}
+      >
+        {link.label}
+      </a>
+    ))}
+  </nav>
 </header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+
+  if (button && menu && iconOpen && iconClose) {
+    const setOpen = (open: boolean) => {
+      menu.classList.toggle('hidden', !open);
+      button.setAttribute('aria-expanded', String(open));
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+    };
+
+    button.addEventListener('click', () => {
+      setOpen(menu.classList.contains('hidden'));
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+  }
+</script>

@@ -35,7 +35,7 @@ const education = [
   <div class="grid gap-5 md:grid-cols-2">
     {education.map((item) => (
       <article class="reveal card-hover accent-bar group rounded-3xl border border-hairline bg-paper p-7 pl-8 shadow-sm">
-        <div class="flex items-start justify-between gap-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
           <div class="flex items-center gap-4">
             <span class="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-2xl border border-hairline bg-white p-1.5 shadow-sm">
               <img src={item.logo} alt={`${item.school} crest`} width="48" height="48" loading="lazy" class="h-full w-full object-contain" />
@@ -46,7 +46,7 @@ const education = [
             </div>
           </div>
           <span class:list={[
-            'shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]',
+            'self-start shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]',
             item.status === 'In progress'
               ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
               : 'border-hairline bg-paper-alt text-slate-500'
