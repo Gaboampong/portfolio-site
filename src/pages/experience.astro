@@ -1,20 +1,97 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import ExperienceSection from '../components/ExperienceSection.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import CareerTimeline from '../components/CareerTimeline.astro';
+import ToolsGrid from '../components/ToolsGrid.astro';
+import { roles, education, certifications, highlights } from '../data/experience';
 ---
 
 <Layout
-  title="Experience | Gabriel Adjei Boampong"
-  description="Career history and skills of Gabriel Adjei Boampong across application development, database engineering, and BI reporting."
+  title="Experience · Gabriel Adjei Boampong"
+  description="Career history, education, and skills of Gabriel Adjei Boampong across application development, database engineering, and data analysis."
+  current="/experience"
 >
-  <SiteHeader current="/experience" />
+  <section aria-labelledby="page-title" class="pb-6 pt-14 sm:pt-24">
+    <div class="reveal mx-auto max-w-[1000px] px-4 text-center sm:px-6">
+      <h1 id="page-title" class="display text-[48px] sm:text-[80px] lg:text-[96px]">Experience</h1>
+      <p class="mx-auto mt-4 max-w-[42ch] text-[19px] leading-relaxed text-ink-2 sm:text-[24px] sm:leading-snug">
+        Each role sharpened the same skill: taking messy operational needs and turning them into working software and data people can trust.
+      </p>
+      <p class="mt-6">
+        <a href="/asserts/Gabriel_Adjei_Boampong_CV.pdf" class="group inline-flex min-h-11 items-center gap-1 text-[17px] text-link">
+          <span class="group-hover:underline">Download the full CV (PDF)</span>
+        </a>
+      </p>
+    </div>
+    <div class="reveal mx-auto mt-12 max-w-[1240px] px-2 sm:mt-16 sm:px-4">
+      <CareerTimeline />
+    </div>
+  </section>
 
-  <main class="relative overflow-hidden">
-    <div class="blob pointer-events-none absolute -right-16 -top-16 h-64 w-64 bg-brass/6" aria-hidden="true"></div>
-    <ExperienceSection />
-  </main>
+  <section aria-labelledby="roles-title" class="mx-auto max-w-[1200px] px-4 pt-20 sm:px-6">
+    <h2 id="roles-title" class="display reveal mb-8 text-[36px] sm:text-[48px]">Roles</h2>
+    <ol class="border-t border-line">
+      {roles.map((role) => (
+        <li class="reveal grid gap-2 border-b border-line py-10 md:grid-cols-[240px_1fr] md:gap-10">
+          <p class="text-[15px] text-ink-2">{role.period}</p>
+          <div>
+            <h3 class="text-[24px] font-semibold leading-tight tracking-tight">{role.role}</h3>
+            <p class="mt-1 text-ink-2">{role.company}</p>
+            <ul class="mt-5 max-w-[68ch] list-disc space-y-2 pl-5 leading-relaxed marker:text-line">
+              {role.outcomes.map((outcome) => <li>{outcome}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
 
-  <SiteFooter />
+  <section id="education" aria-labelledby="education-title" class="mx-auto max-w-[1200px] px-4 pt-24 sm:px-6">
+    <h2 id="education-title" class="display reveal text-[36px] sm:text-[48px]">Education</h2>
+    <ul class="mt-8 grid gap-3 md:grid-cols-2">
+      {education.map((item) => (
+        <li class="reveal flex items-start gap-5 rounded-[28px] bg-canvas-alt p-7 sm:p-8">
+          <span class="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white p-2">
+            <img src={item.logo} alt="" width="40" height="40" loading="lazy" class="h-full w-full object-contain" />
+          </span>
+          <div>
+            <p class="text-sm text-ink-2">{item.period} · {item.status}</p>
+            <h3 class="mt-1 text-[22px] font-semibold leading-tight tracking-tight">{item.degree}</h3>
+            <p class="mt-1 text-ink-2">{item.school}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section aria-labelledby="skills-title" class="mx-auto max-w-[1240px] px-2 pt-24 sm:px-4">
+    <div class="reveal mx-auto mb-10 max-w-[720px] px-3 text-center">
+      <h2 id="skills-title" class="display text-[36px] sm:text-[48px]">Tools I use</h2>
+      <p class="mt-4 text-[19px] leading-relaxed text-ink-2">The kit behind the products, the databases, and the analysis.</p>
+    </div>
+    <ToolsGrid />
+
+    <div class="mt-3 grid gap-3 md:grid-cols-[1fr_1.4fr]">
+      <div class="reveal flex flex-col justify-between rounded-[28px] bg-ink p-7 text-canvas sm:p-8">
+        <p class="text-sm font-semibold opacity-80">Highlight</p>
+        <p class="display mt-6 text-[72px] sm:text-[88px]">20%</p>
+        <p class="mt-2 max-w-[34ch] leading-relaxed opacity-80">{highlights[0]}</p>
+      </div>
+      <div class="reveal rounded-[28px] bg-canvas-alt p-7 sm:p-8">
+        <h3 class="text-[22px] font-semibold tracking-tight">Certifications</h3>
+        <ul class="mt-6 grid gap-3">
+          {certifications.map((cert) => (
+            <li class="flex items-start gap-3 rounded-2xl bg-canvas p-4">
+              <svg class="mt-0.5 h-5 w-5 shrink-0 text-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="9" r="5.5" /><path d="M9 13.8 7.5 21l4.5-2.5 4.5 2.5-1.5-7.2" />
+              </svg>
+              <span class="leading-snug">{cert}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <ContactBlock />
 </Layout>

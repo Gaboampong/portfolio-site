@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductTile from '../components/ProductTile.astro';
+import SystemTiles from '../components/SystemTiles.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Triptych from '../components/Triptych.astro';
+import { products } from '../data/work';
+---
+
+<Layout
+  title="Work · Gabriel Adjei Boampong"
+  description="Live products by Gabriel Adjei Boampong (KUCHILL, DigiHub, and Chale, where?), plus internal platforms, databases, and BI systems."
+  current="/work"
+>
+  <section aria-labelledby="page-title" class="pb-20 pt-14 sm:pb-28 sm:pt-24">
+    <div class="reveal mx-auto max-w-[1000px] px-4 text-center sm:px-6">
+      <h1 id="page-title" class="display text-[48px] sm:text-[80px] lg:text-[96px]">Work</h1>
+      <p class="mx-auto mt-4 max-w-[40ch] text-[19px] leading-relaxed text-ink-2 sm:text-[24px] sm:leading-snug">
+        Three products you can open right now, and the systems I build for organizations behind closed doors.
+      </p>
+    </div>
+    <div class="mt-12 sm:mt-16">
+      <Triptych />
+    </div>
+  </section>
+
+  <section aria-label="Live products" class="mx-auto max-w-[1240px] px-2 sm:px-4">
+    <div class="grid gap-3">
+      {products.map((product, index) => <ProductTile product={product} headingLevel="h2" eager={index === 0} />)}
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[1240px] px-2 pt-3 sm:px-4">
+    <SystemTiles
+      title="Internal systems"
+      lead="Built for clients and employers, so there are no public screenshots. Happy to walk through any of them in a conversation."
+    />
+  </div>
+
+  <ContactBlock />
+</Layout>

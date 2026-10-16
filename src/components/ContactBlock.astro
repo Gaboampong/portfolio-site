@@ -1,0 +1,40 @@
+---
+interface Props {
+  headingLevel?: 'h1' | 'h2';
+}
+
+const { headingLevel: Heading = 'h2' } = Astro.props;
+
+const channels = [
+  { label: 'Email', value: 'gabrieladjei0@gmail.com', href: 'mailto:gabrieladjei0@gmail.com' },
+  { label: 'Phone', value: '+233 24 293 1397', href: 'tel:+233242931397' },
+  { label: 'LinkedIn', value: 'in/gabrielboampong', href: 'https://www.linkedin.com/in/gabrielboampong' },
+  { label: 'GitHub', value: 'Gaboampong', href: 'https://github.com/Gaboampong' },
+];
+---
+
+<section id="contact" aria-labelledby="contact-title" class="mx-auto max-w-[1200px] px-4 py-24 sm:px-6 sm:py-32">
+  <div class="reveal mx-auto max-w-[760px] text-center">
+    <Heading id="contact-title" class="display text-[44px] sm:text-[64px]">Have something to build?</Heading>
+    <p class="mx-auto mt-5 max-w-[46ch] text-[19px] leading-relaxed text-ink-2 sm:text-[21px]">
+      A product, a database that needs taming, data that needs answers, or a role on your team. Tell me about it. I reply to every message.
+    </p>
+    <a
+      href="mailto:gabrieladjei0@gmail.com"
+      class="mt-8 inline-flex min-h-12 items-center rounded-full bg-link px-7 text-[17px] font-medium text-canvas transition-opacity hover:opacity-90"
+    >
+      Email me
+    </a>
+  </div>
+
+  <ul class="reveal mx-auto mt-16 grid max-w-[980px] grid-cols-1 gap-px overflow-hidden rounded-[20px] bg-line/70 sm:grid-cols-2 lg:grid-cols-4">
+    {channels.map((channel) => (
+      <li class="bg-canvas-alt">
+        <a href={channel.href} class="group flex min-h-11 flex-col px-6 py-5 hover:bg-line/30">
+          <span class="text-sm text-ink-2">{channel.label}</span>
+          <span class="mt-1 break-words font-medium text-ink group-hover:text-link">{channel.value}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>

@@ -1,0 +1,47 @@
+---
+// Hero banner: one brand-colored panel per live product, with its phone screenshot
+// rising out of the panel. Each panel jumps to that product's tile.
+import { Picture } from 'astro:assets';
+import { products } from '../data/work';
+
+interface Props {
+  hrefBase?: string;
+}
+
+const { hrefBase = '' } = Astro.props;
+const order = ['kuchill', 'chale', 'digihub'];
+const panels = order.map((slug) => products.find((product) => product.slug === slug)!);
+---
+
+<ul class="triptych mx-auto grid max-w-[1240px] grid-cols-3 gap-2 px-2 sm:gap-3 sm:px-4" aria-label="Live products">
+  {panels.map((product, index) => (
+    <li>
+      <a
+        href={`${hrefBase}#${product.slug}`}
+        class={`tile tile-${product.theme} group relative block aspect-[3/5] overflow-hidden rounded-[20px] sm:aspect-[4/5] sm:rounded-[28px]`}
+        style={`--i: ${index}`}
+      >
+        <span class="block px-3 pt-4 text-center sm:px-6 sm:pt-8">
+          <span class="hidden text-sm font-semibold sm:block" style="color: var(--tile-accent)">{product.kind}</span>
+          <span class="display block text-[15px] sm:mt-1 sm:text-[28px] lg:text-[34px]">{product.name}</span>
+          <span class="sr-only">: {product.tagline} Jump to the project.</span>
+        </span>
+        <span class="rise absolute left-1/2 top-[30%] block w-[76%] sm:top-[34%] sm:w-[58%]">
+          <span class="frame-phone block transition-transform duration-500 ease-out group-hover:-translate-y-3 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+            <Picture
+              src={product.phone.src}
+              alt=""
+              widths={[160, 240, 390]}
+              sizes="(min-width: 1100px) 230px, 24vw"
+              formats={['avif']}
+              fallbackFormat="webp"
+              loading="eager"
+              fetchpriority={index === 1 ? 'high' : 'auto'}
+              class="block h-auto w-full"
+            />
+          </span>
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

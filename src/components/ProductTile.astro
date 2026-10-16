@@ -1,0 +1,84 @@
+---
+import { Picture } from 'astro:assets';
+import type { Product } from '../data/work';
+
+interface Props {
+  product: Product;
+  headingLevel?: 'h2' | 'h3';
+  eager?: boolean;
+}
+
+const { product, headingLevel: Heading = 'h3', eager = false } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
+---
+
+<article
+  id={product.slug}
+  class={`tile tile-${product.theme} overflow-hidden rounded-[28px] px-5 pt-12 sm:px-10 sm:pt-16 lg:px-16`}
+  aria-labelledby={`${product.slug}-title`}
+>
+  <div class="reveal mx-auto max-w-[680px] text-center">
+    <p class="text-sm font-semibold" style="color: var(--tile-accent)">{product.kind}</p>
+    <Heading id={`${product.slug}-title`} class="display mt-2 text-[40px] sm:text-[56px]">{product.name}</Heading>
+    <p class="mt-3 text-[21px] font-medium leading-snug tracking-tight sm:text-2xl">{product.tagline}</p>
+    <p class="mx-auto mt-4 max-w-[60ch] leading-relaxed" style="color: var(--tile-ink-2)">{product.summary}</p>
+    <a
+      href={product.url}
+      target="_blank"
+      rel="noopener"
+      class="mt-6 inline-flex min-h-11 items-center gap-1.5 rounded-full px-5 text-[15px] font-medium transition-opacity hover:opacity-85"
+      style="background: var(--tile-ink); color: var(--tile-bg)"
+    >
+      Visit {product.host}
+      <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 11l6-6M6 5h5v5" />
+      </svg>
+      <span class="sr-only">(opens in a new tab)</span>
+    </a>
+  </div>
+
+  <div class="reveal relative mx-auto mt-12 max-w-[980px] pb-10 sm:mt-14 sm:pb-14">
+    <div class="frame-desktop">
+      <Picture
+        src={product.desktop.src}
+        alt={product.desktop.alt}
+        widths={[640, 980, 1440, 1960]}
+        sizes="(min-width: 1100px) 980px, 92vw"
+        formats={['avif']}
+        fallbackFormat="webp"
+        loading={loading}
+        class="block h-auto w-full"
+      />
+    </div>
+    <div class="frame-phone absolute -bottom-2 right-[-2%] w-[30%] sm:-bottom-4 sm:w-[22%] lg:right-[-4%]">
+      <Picture
+        src={product.phone.src}
+        alt={product.phone.alt}
+        widths={[160, 240, 390]}
+        sizes="(min-width: 1100px) 220px, 30vw"
+        formats={['avif']}
+        fallbackFormat="webp"
+        loading={loading}
+        class="block h-auto w-full"
+      />
+    </div>
+  </div>
+
+  <div class="-mx-5 border-t px-5 py-8 sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16" style="border-color: var(--tile-line)">
+    <div class="mx-auto grid max-w-[980px] gap-8 lg:grid-cols-[1fr_auto] lg:items-start">
+      <ul class="grid gap-x-8 gap-y-3 text-[15px] leading-snug sm:grid-cols-2">
+        {product.facts.map((fact) => (
+          <li class="flex gap-2.5">
+            <svg class="mt-[3px] h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--tile-accent)">
+              <path d="M3.5 8.5l3 3 6-7" />
+            </svg>
+            <span>{fact}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="text-sm lg:max-w-[220px] lg:text-right" style="color: var(--tile-ink-2)">
+        <span class="sr-only">Built with </span>{product.stack.join(' · ')}
+      </p>
+    </div>
+  </div>
+</article>

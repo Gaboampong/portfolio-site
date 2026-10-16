@@ -1,0 +1,94 @@
+---
+// Hero banner for Experience: every role and degree on one time axis.
+// Identity is never color alone: rows are grouped under labeled headings and each bar is named.
+import { roles, education } from '../data/experience';
+
+const NOW = '2026-10';
+const END = '2026-12';
+const START = '2019-09';
+
+const toMonths = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  return y * 12 + (m - 1);
+};
+
+const span = toMonths(END) - toMonths(START);
+const pct = (ym: string) => ((toMonths(ym) - toMonths(START)) / span) * 100;
+
+const toBar = (start: string, end: string | null) => {
+  const left = pct(start);
+  const right = pct(end ?? NOW);
+  return { left, width: Math.max(right - left, 0.9), ongoing: end === null };
+};
+
+const groups = [
+  {
+    label: 'Work',
+    series: 'work',
+    rows: [...roles].reverse().map((role) => ({
+      title: role.role,
+      detail: `${role.company} · ${role.period}`,
+      ...toBar(role.start, role.end),
+    })),
+  },
+  {
+    label: 'Education',
+    series: 'edu',
+    rows: [...education].reverse().map((item) => ({
+      title: item.degree,
+      detail: `${item.school} · ${item.period}`,
+      ...toBar(item.start, item.end),
+    })),
+  },
+];
+
+const years = [2020, 2021, 2022, 2023, 2024, 2025, 2026].map((year) => ({ year, left: pct(`${year}-01`) }));
+---
+
+<figure class="career overflow-x-clip rounded-[28px] bg-canvas-alt px-5 py-7 sm:px-10 sm:py-10" aria-labelledby="career-caption">
+  <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+    <figcaption id="career-caption" class="text-[17px] font-semibold">2019 to today</figcaption>
+    <ul class="flex gap-5 text-sm text-ink-2" aria-label="Legend">
+      <li class="flex items-center gap-2"><span class="h-2.5 w-4 rounded-[3px] bg-[var(--series-work)]" aria-hidden="true"></span>Work</li>
+      <li class="flex items-center gap-2"><span class="h-2.5 w-4 rounded-[3px] bg-[var(--series-edu)]" aria-hidden="true"></span>Education</li>
+    </ul>
+  </div>
+
+  <div class="mt-6 grid md:grid-cols-[minmax(0,330px)_1fr] md:gap-x-8">
+    <div class="hidden md:block" aria-hidden="true"></div>
+    <div class="relative h-6 text-xs text-ink-2" aria-hidden="true">
+      {years.map((tick) => (
+        <span class="absolute top-0 -translate-x-1/2 tabular-nums" style={`left: ${tick.left}%`}>
+          <span class="hidden sm:inline">{tick.year}</span><span class="sm:hidden">’{String(tick.year).slice(2)}</span>
+        </span>
+      ))}
+    </div>
+
+    {groups.map((group) => (
+      <>
+        <p class="mt-5 text-sm font-semibold text-ink-2 md:col-span-2">{group.label}</p>
+        {group.rows.map((row) => (
+          <>
+            <p class="mt-3 truncate text-[15px] md:mt-0 md:leading-10" title={row.title}>{row.title}</p>
+            <div class="career-track relative h-8 md:h-10">
+              {years.map((tick) => (
+                <span class="absolute inset-y-0 w-px bg-line/70" style={`left: ${tick.left}%`} aria-hidden="true"></span>
+              ))}
+              <span
+                tabindex="0"
+                class:list={['career-bar group absolute top-1/2 h-3 -translate-y-1/2 rounded-[4px] outline-offset-2', row.ongoing && 'is-ongoing']}
+                style={`left: ${row.left}%; width: ${row.width}%; --bar: var(--series-${group.series})`}
+                aria-label={`${row.title}, ${row.detail}`}
+              >
+                <span class:list={['career-tip pointer-events-none absolute bottom-full z-10 mb-2', row.left > 55 ? 'right-0' : 'left-0', 'w-max max-w-[260px] rounded-xl bg-ink px-3 py-2 text-xs leading-snug text-canvas shadow-lg']} role="presentation">
+                  <span class="block font-semibold">{row.title}</span>
+                  <span class="block opacity-80">{row.detail}</span>
+                </span>
+              </span>
+            </div>
+          </>
+        ))}
+      </>
+    ))}
+  </div>
+</figure>

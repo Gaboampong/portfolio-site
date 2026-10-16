@@ -1,0 +1,43 @@
+---
+// "Tools I use" as four home-screen pages: each tool is an app icon in its brand color.
+import { skills } from '../data/experience';
+import { toolIcons } from '../data/tool-icons';
+
+interface Props {
+  headingLevel?: 'h2' | 'h3';
+}
+
+const { headingLevel: Heading = 'h3' } = Astro.props;
+
+// Short labels for names too long to sit under an icon
+const shortLabels: Record<string, string> = { 'SAP BusinessObjects': 'SAP BO' };
+---
+
+<ul class="grid gap-3 md:grid-cols-2">
+  {skills.map((skill) => (
+    <li class="reveal flex flex-col rounded-[28px] bg-canvas-alt p-6 sm:p-8">
+      <Heading class="text-[22px] font-semibold tracking-tight">{skill.group}</Heading>
+      <p class="mt-1 text-[15px] text-ink-2">{skill.note}</p>
+
+      <ul class="mt-7 grid grid-cols-4 gap-x-2 gap-y-6 sm:grid-cols-5">
+        {skill.tools.map((tool) => {
+          const icon = toolIcons[tool];
+          return (
+            <li class="app group flex flex-col items-center text-center">
+              <span class="app-icon grid h-14 w-14 place-items-center rounded-[14px] sm:h-[60px] sm:w-[60px] sm:rounded-[15px]" style={`background: ${icon.bg}; color: ${icon.fg}`}>
+                <svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d={icon.path} />
+                </svg>
+              </span>
+              <span class="mt-2 line-clamp-2 max-w-[84px] text-xs leading-tight" title={tool}>{shortLabels[tool] ?? tool}</span>
+            </li>
+          );
+        })}
+      </ul>
+
+      <p class="mt-auto pt-7 text-sm leading-relaxed text-ink-2">
+        <span class="font-medium text-ink">Also:</span> {skill.practices.join(' · ')}
+      </p>
+    </li>
+  ))}
+</ul>

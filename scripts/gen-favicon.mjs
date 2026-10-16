@@ -7,7 +7,9 @@ const svg = await readFile(root + 'favicon.svg');
 
 // Render PNGs from the SVG
 const png32 = await sharp(svg).resize(32, 32).png().toBuffer();
-const png180 = await sharp(svg).resize(180, 180).png().toBuffer();
+// iOS rounds the corners itself, so the touch icon is full-bleed with no transparency
+const fullBleed = Buffer.from(svg.toString().replace(/rx="[\d.]+"/, 'rx="0"'));
+const png180 = await sharp(fullBleed).resize(180, 180).flatten({ background: '#1d1d1f' }).png().toBuffer();
 
 await writeFile(root + 'apple-touch-icon.png', png180);
 await writeFile(root + 'favicon-32.png', png32);

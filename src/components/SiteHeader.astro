@@ -1,4 +1,6 @@
 ---
+import Monogram from './Monogram.astro';
+
 interface Props {
   current?: string;
 }
@@ -6,110 +8,102 @@ interface Props {
 const { current = '/' } = Astro.props;
 
 const links = [
-  { href: '/', label: 'Profile' },
-  { href: '/education', label: 'Education' },
+  { href: '/work', label: 'Work' },
   { href: '/experience', label: 'Experience' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
 ];
 ---
 
-<header class="sticky top-0 z-30 border-b border-hairline bg-paper/90 backdrop-blur">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-6 lg:px-8">
-    <a href="/" class="inline-flex items-center">
-      <img src="/asserts/gabriel-adjei-boampong-logo.svg" alt="Gabriel Adjei Boampong" class="h-10 w-auto" />
+<header class="nav-material sticky top-0 z-40 border-b border-line/60">
+  <div class="mx-auto flex h-14 max-w-[1200px] items-center justify-between px-4 sm:px-6">
+    <a href="/" class="-ml-2 inline-flex min-h-11 items-center gap-2.5 rounded-lg px-2 text-ink" aria-label="Gabriel Adjei Boampong, home">
+      <Monogram class="h-7 w-7" />
+      <span class="hidden text-[15px] font-semibold tracking-tight sm:inline">Gabriel Adjei Boampong</span>
     </a>
 
-    <nav class="hidden gap-8 text-sm text-slate-600 md:flex">
+    <nav aria-label="Main" class="hidden items-center gap-1 md:flex">
       {links.map((link) => (
-        <a href={link.href} class="group relative flex flex-col items-center gap-1.5 transition hover:text-ledger">
-          <span class:list={['transition', current === link.href ? 'font-semibold text-ledger' : '']}>{link.label}</span>
-          <span
-            class:list={[
-              'h-1 w-1 rounded-full transition',
-              current === link.href ? 'bg-brass' : 'bg-transparent'
-            ]}
-            aria-hidden="true"
-          ></span>
+        <a
+          href={link.href}
+          aria-current={current === link.href ? 'page' : undefined}
+          class:list={[
+            'inline-flex min-h-11 items-center rounded-full px-4 text-sm transition-colors',
+            current === link.href ? 'font-semibold text-ink' : 'text-ink-2 hover:text-ink',
+          ]}
+        >
+          {link.label}
         </a>
       ))}
+      <a
+        href="/asserts/Gabriel_Adjei_Boampong_CV.pdf"
+        class="ml-3 inline-flex min-h-9 items-center rounded-full bg-ink px-4 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
+      >
+        Download CV
+      </a>
     </nav>
-
-    <a
-      href="/contact"
-      class:list={[
-        'hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition md:inline-flex',
-        current === '/contact'
-          ? 'bg-brass text-ink'
-          : 'bg-ledger text-white hover:bg-ledger/90'
-      ]}
-    >
-      Contact Me
-      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </a>
 
     <button
       type="button"
-      id="mobile-menu-button"
-      class="inline-flex items-center justify-center rounded-lg border border-hairline p-2 text-ink transition hover:border-blue/40 md:hidden"
+      id="menu-button"
+      class="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-full text-ink md:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label="Toggle navigation menu"
+      aria-label="Menu"
     >
-      <svg id="menu-icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </svg>
-      <svg id="menu-icon-close" class="hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18" />
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true">
+        <path data-open d="M4 8h16M4 16h16" />
+        <path data-close class="hidden" d="M6 6l12 12M18 6L6 18" />
       </svg>
     </button>
   </div>
 
-  <nav id="mobile-menu" class="hidden space-y-1 border-t border-hairline px-5 py-3 sm:px-6 md:hidden">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        class:list={[
-          'block rounded-lg px-3 py-2.5 text-sm transition',
-          current === link.href ? 'bg-blue/8 font-semibold text-ledger' : 'text-slate-600 hover:bg-paper-alt hover:text-ledger'
-        ]}
-      >
-        {link.label}
-      </a>
-    ))}
+  <nav id="mobile-menu" aria-label="Main" class="hidden border-t border-line/60 px-4 pb-6 pt-2 md:hidden">
+    <ul>
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={current === link.href ? 'page' : undefined}
+            class:list={[
+              'flex min-h-12 items-center border-b border-line/60 text-[22px] tracking-tight',
+              current === link.href ? 'font-semibold text-ink' : 'text-ink',
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
     <a
-      href="/contact"
-      class:list={[
-        'block rounded-lg px-3 py-2.5 text-sm transition',
-        current === '/contact' ? 'bg-blue/8 font-semibold text-ledger' : 'text-slate-600 hover:bg-paper-alt hover:text-ledger'
-      ]}
+      href="/asserts/Gabriel_Adjei_Boampong_CV.pdf"
+      class="mt-6 inline-flex min-h-11 items-center rounded-full bg-ink px-5 text-[15px] font-medium text-canvas"
     >
-      Contact Me
+      Download CV
     </a>
   </nav>
 </header>
 
 <script>
-  const button = document.getElementById('mobile-menu-button');
+  const button = document.getElementById('menu-button');
   const menu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('menu-icon-open');
-  const iconClose = document.getElementById('menu-icon-close');
 
-  if (button && menu && iconOpen && iconClose) {
+  if (button && menu) {
+    const iconOpen = button.querySelector('[data-open]');
+    const iconClose = button.querySelector('[data-close]');
+
     const setOpen = (open: boolean) => {
       menu.classList.toggle('hidden', !open);
       button.setAttribute('aria-expanded', String(open));
-      iconOpen.classList.toggle('hidden', open);
-      iconClose.classList.toggle('hidden', !open);
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
     };
 
-    button.addEventListener('click', () => {
-      setOpen(menu.classList.contains('hidden'));
-    });
-
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
+    button.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.classList.contains('hidden')) {
+        setOpen(false);
+        button.focus();
+      }
     });
   }
 </script>

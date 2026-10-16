@@ -1,24 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import Hero from '../components/Hero.astro';
-import StatsStrip from '../components/StatsStrip.astro';
-import TechStackSection from '../components/TechStackSection.astro';
-import ExpertiseSection from '../components/ExpertiseSection.astro';
-import AboutSection from '../components/AboutSection.astro';
+import ProductTile from '../components/ProductTile.astro';
+import SystemTiles from '../components/SystemTiles.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import Triptych from '../components/Triptych.astro';
+import { products } from '../data/work';
+import { roles } from '../data/experience';
+
+const disciplines = [
+  {
+    title: 'Products on the web',
+    body: 'Storefronts, marketplaces, and apps, designed and built end to end, from the first sketch to launch.',
+  },
+  {
+    title: 'Databases that hold up',
+    body: 'Schemas, SQL that stays fast as data grows, and validation that catches bad data before anyone reports on it.',
+  },
+  {
+    title: 'Analysis people trust',
+    body: 'Data analysis, Power BI and BusinessObjects reporting, and live dashboards that turn raw operational data into decisions.',
+  },
+];
+
+const recentRoles = roles.slice(0, 3);
 ---
 
-<Layout>
-  <SiteHeader current="/" />
+<Layout current="/">
+  <section aria-labelledby="hero-title" class="pb-3 pt-12 sm:pt-16 lg:pt-20">
+    <div class="reveal mx-auto max-w-[1000px] px-4 text-center sm:px-6">
+      <p class="text-[17px] font-semibold sm:text-[21px]">Gabriel Adjei Boampong</p>
+      <h1 id="hero-title" class="display mx-auto mt-3 max-w-[14ch] text-[46px] sm:text-[72px] lg:text-[84px]">
+        I build software people in Accra actually use.
+      </h1>
+      <p class="mx-auto mt-6 max-w-[40ch] text-[19px] leading-relaxed text-ink-2 sm:text-[24px] sm:leading-snug">
+        Developer, database engineer, and data analyst. I build the product, design the database underneath it, and turn what it collects into answers.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        <a href="#work" class="inline-flex min-h-12 items-center rounded-full bg-link px-7 text-[17px] font-medium text-canvas transition-opacity hover:opacity-90">
+          See the work
+        </a>
+        <a href="/asserts/Gabriel_Adjei_Boampong_CV.pdf" class="group inline-flex min-h-12 items-center gap-1 text-[17px] text-link">
+          <span class="group-hover:underline">Download CV</span>
+          <svg class="h-3.5 w-3.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3v9M4 8l4 4 4-4" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="mt-10 sm:mt-14">
+      <Triptych />
+    </div>
+  </section>
 
-  <main>
-    <Hero />
-    <StatsStrip />
-    <TechStackSection />
-    <ExpertiseSection />
-    <AboutSection />
-  </main>
+  <section id="work" aria-labelledby="work-title" class="mx-auto max-w-[1240px] px-2 pt-20 sm:px-4 sm:pt-28">
+    <h2 id="work-title" class="display reveal mb-10 px-3 text-center text-[36px] sm:text-[48px]">Live and in use.</h2>
+    <div class="grid gap-3">
+      {products.map((product, index) => <ProductTile product={product} eager={index === 0} />)}
+    </div>
+  </section>
 
-  <SiteFooter />
+  <div class="mx-auto max-w-[1240px] px-2 pt-3 sm:px-4">
+    <SystemTiles
+      title="And the systems behind the scenes."
+      lead="Most of my day job runs inside organizations: internal platforms, databases, and analysis that never get a public URL."
+    />
+    <p class="mt-8 text-center">
+      <a href="/work" class="group inline-flex min-h-11 items-center gap-1 text-[17px] text-link">
+        <span class="group-hover:underline">More about the work</span>
+        <span aria-hidden="true">›</span>
+      </a>
+    </p>
+  </div>
+
+  <section aria-labelledby="disciplines-title" class="mx-auto max-w-[1200px] px-4 pt-24 sm:px-6 sm:pt-32">
+    <h2 id="disciplines-title" class="display reveal max-w-[18ch] text-[36px] sm:text-[48px]">From the screen, down to the data, and back out as insight.</h2>
+    <div class="mt-12 grid gap-10 border-t border-line pt-10 md:grid-cols-3 md:gap-12">
+      {disciplines.map((item) => (
+        <div class="reveal">
+          <h3 class="text-[21px] font-semibold tracking-tight">{item.title}</h3>
+          <p class="mt-3 leading-relaxed text-ink-2">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="now-title" class="mx-auto max-w-[1200px] px-4 pt-24 sm:px-6 sm:pt-32">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <h2 id="now-title" class="display reveal text-[36px] sm:text-[48px]">Experience</h2>
+      <a href="/experience" class="group inline-flex min-h-11 items-center gap-1 text-[17px] text-link">
+        <span class="group-hover:underline">Full experience and education</span>
+        <span aria-hidden="true">›</span>
+      </a>
+    </div>
+    <ol class="mt-8 border-t border-line">
+      {recentRoles.map((role) => (
+        <li class="reveal grid gap-1 border-b border-line py-6 sm:grid-cols-[200px_1fr] sm:gap-8">
+          <p class="text-[15px] text-ink-2">{role.period}</p>
+          <div>
+            <h3 class="text-[19px] font-semibold tracking-tight">{role.role}</h3>
+            <p class="mt-0.5 text-ink-2">{role.company}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <ContactBlock />
 </Layout>

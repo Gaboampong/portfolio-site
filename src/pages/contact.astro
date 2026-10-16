@@ -1,20 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SiteHeader from '../components/SiteHeader.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import ContactSection from '../components/ContactSection.astro';
+import ContactBlock from '../components/ContactBlock.astro';
 ---
 
 <Layout
-  title="Contact | Gabriel Adjei Boampong"
-  description="Get in touch with Gabriel Adjei Boampong for data-focused roles and practical problem solving."
+  title="Contact · Gabriel Adjei Boampong"
+  description="Get in touch with Gabriel Adjei Boampong about a product, a database, or a role."
+  current="/contact"
 >
-  <SiteHeader current="/contact" />
-
-  <main class="relative overflow-hidden">
-    <div class="blob pointer-events-none absolute -right-16 -top-16 h-64 w-64 bg-brass/6" aria-hidden="true"></div>
-    <ContactSection />
-  </main>
-
-  <SiteFooter />
+  <ContactBlock headingLevel="h1" />
 </Layout>
