@@ -70,8 +70,8 @@ export const products: Product[] = [
     tagline: 'Stop arguing about where to go. The board picks the spot.',
     summary:
       'A going-out guide that settles the "where should we go?" debate. Tell it the vibe and a split-flap board calls out a place. It also pulls in this weekend’s events, cinema showtimes, and food, fuel, cash, and pharmacies near you. Born in Accra, it works in any city.',
-    url: 'https://chale-where.vercel.app',
-    host: 'chale-where.vercel.app',
+    url: 'https://chalewhere.app',
+    host: 'chalewhere.app',
     facts: [
       '280+ Accra restaurant menus, checked against the source daily',
       'Weekend events merged from five ticketing sources',
